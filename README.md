@@ -52,6 +52,7 @@ Create initial hotel config:
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
   -F numRooms=200 \
   -F overbookingLevel=50
+___
 
 Update existing hotel config:
 `(POST) http://localhost:8080/rest/config/update`
@@ -65,6 +66,7 @@ Update existing hotel config:
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
   -F numRooms=2 \
   -F overbookingLevel=50
+___
 
 Get existing hotel config:
 `(GET) http://localhost:8080/rest/config/get`
@@ -77,6 +79,8 @@ curl -X GET \
   -F overbookingLevel=50
 
 Returns error code 500 if hotel config != 1
+___
+
 
 Attempt to create new hotel reservation:
 `(POST) http://localhost:8080/rest/reservation/save`
@@ -98,6 +102,7 @@ Attempt to create new hotel reservation:
   -F email=mail@mail.com
 
 returns error code 500 if requested dates are at capacity
+___
 
 `(GET) http://localhost:8080/rest/reservation/get/all`
 
