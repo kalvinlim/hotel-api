@@ -1,5 +1,13 @@
 # Hotel Api
 
+## Prerequisites
+
+* Maven
+* cURL or Postman
+
+To run:
+`mvn spring-boot:run`
+
 ## Implementation
 
 This was an interesting problem.  The difficulty was in transacting the data, that is how do we save and query the data in a way that maintains the integrity of the overbooking capacity.  Not wanting to over engineer in the time I had to implement this, I went with MySQL over a noSQL solution.  I felt that we need a transactional database for this kind of problem.
@@ -30,14 +38,6 @@ As for concurrency, I think a queue + worker setup to make bookings could potent
 Spring Boot backend with mysql database. For local/unit test environment, in memory H2 database is packaged and configured to be the default.
 
 Remote mysql connection available upon request.
-
-## Prerequisites
-
-* Maven
-* cURL or Postman
-
-To run:
-`mvn spring-boot:run`
 
 ## Endpoints
 
