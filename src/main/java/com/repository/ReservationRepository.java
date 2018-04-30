@@ -9,6 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
-    @Query(value=  "SELECT * FROM hotel_db.reservations WHERE (arrival <= ?1 AND departure >= ?1) OR (arrival >= ?1 AND arrival <= ?2)", nativeQuery = true)
+    @Query(value=  "SELECT * FROM reservations WHERE (arrival <= ?1 AND departure >= ?1) OR (arrival >= ?1 AND arrival <= ?2)", nativeQuery = true)
     List<Reservation> getAllReservationsInRange(LocalDate arrival, LocalDate departure);
 }

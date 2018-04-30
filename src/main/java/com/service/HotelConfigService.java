@@ -26,4 +26,11 @@ public class HotelConfigService {
         hotelConfig.setOverbookingLevel(overbookingLevel);
         hotelConfigRepository.save(hotelConfig);
     }
+
+    public void createConfig(Integer numRooms, Integer overbookingLevel){
+        HotelConfig hotelConfig = new HotelConfig();
+        hotelConfig.setNumRooms(numRooms);
+        hotelConfig.setOverbookingLevel(overbookingLevel);
+        hotelConfigRepository.save(hotelConfig);
+    }
 }

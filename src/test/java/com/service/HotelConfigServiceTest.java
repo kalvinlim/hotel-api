@@ -16,7 +16,6 @@ import static org.junit.Assert.fail;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
 public class HotelConfigServiceTest {
 
     @Autowired
@@ -70,5 +69,15 @@ public class HotelConfigServiceTest {
         } catch (InvalidHotelConfigException e) {
             fail();
         }
+    }
+
+    @Test
+    public void whenCreate_expectConfigInserted(){
+        final Integer NUM_ROOMS = 300;
+        final Integer OVERBOOKING_LEVEL = 11;
+
+        hotelConfigService.createConfig(NUM_ROOMS, OVERBOOKING_LEVEL);
+
+        assertEquals(1, hotelConfigRepository.findAll().spliterator().getExactSizeIfKnown());
     }
 }

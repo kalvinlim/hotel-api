@@ -23,4 +23,10 @@ public class HotelConfigController {
         hotelConfigService.updateConfig(numRooms, overbookingLevel);
         return "Success";
     }
+
+    @PostMapping(path="/create")
+    public @ResponseBody String createConfig(@RequestParam Integer numRooms, @RequestParam Integer overbookingLevel) throws InvalidHotelConfigException {
+        hotelConfigService.createConfig(numRooms, overbookingLevel);
+        return "Success";
+    }
 }
