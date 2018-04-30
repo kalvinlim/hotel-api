@@ -103,7 +103,7 @@ Attempt to create new hotel reservation:
 
 returns error code 500 if requested dates are at capacity
 ___
-
+Get all reservations:
 `(GET) http://localhost:8080/rest/reservation/get/all`
 
   curl -X GET \
@@ -125,6 +125,6 @@ Reservation- models each guest's reservation
 * **lastName**: Last name of guest
 * **email**: Email of guest
 * **arrival**: Guest arrival time formatted as (YYYY-MM-dd)
-* **departure**: Guest departure time formatted (as YYY-MM-dd)
+* **departure**: Guest departure time formatted (as YYYY-MM-dd)
 
 
