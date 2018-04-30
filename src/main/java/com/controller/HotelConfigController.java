@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(path="/rest/config") // This means URL's start with /demo (after com.Application path)
+@RequestMapping(path="/rest/config")
 public class HotelConfigController {
     @Autowired
     private HotelConfigService hotelConfigService;

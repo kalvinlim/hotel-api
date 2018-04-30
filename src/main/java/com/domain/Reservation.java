@@ -3,7 +3,7 @@ package com.domain;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity(name="reservations") // This tells Hibernate to make a table out of this class
+@Entity(name="reservations")
 public class Reservation {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -16,11 +16,9 @@ public class Reservation {
     private String email;
 
     @Column(columnDefinition="DATETIME")
-    //@Temporal(TemporalType.DATE)
     private LocalDate arrival;
 
     @Column(columnDefinition="DATETIME")
-    //@Temporal(TemporalType.DATE)
     private LocalDate departure;
 
     public Integer getId() {
