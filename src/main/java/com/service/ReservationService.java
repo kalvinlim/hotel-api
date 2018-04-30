@@ -35,6 +35,10 @@ public class ReservationService {
         }
     }
 
+    public Iterable<Reservation> findAll(){
+        return reservationRepository.findAll();
+    }
+
     private Map<LocalDate, Integer> countRoomsBookedWithinWindow(List<Reservation> reservations, LocalDate arrival, LocalDate departure){
         Map<LocalDate, Integer> result = new HashMap<>();
         reservations.stream().forEach(res -> {

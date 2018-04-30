@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -127,6 +128,22 @@ public class ReservationServiceTest {
 
         reservationService.addReservation(buildReservation("Billy", "Joe", EMAIL, "2018-05-01","2018-05-03"));
         reservationService.addReservation(buildReservation("Bill", "Bob", EMAIL, "2018-05-03","2018-05-04"));
+    }
+
+    @Test
+    public void whenFindAll_expectCorrectResult() throws InvalidHotelConfigException, RoomCapacityExceededException {
+        HotelConfig hotelConfig = new HotelConfig();
+        hotelConfig.setNumRooms(1);
+        hotelConfig.setOverbookingLevel(0);
+
+        hotelConfigRepository.save(hotelConfig);
+
+        reservationService.addReservation(buildReservation("Billy", "Joe", EMAIL, "2018-05-01","2018-05-03"));
+        reservationService.addReservation(buildReservation("Bill", "Bob", EMAIL, "2018-05-03","2018-05-04"));
+
+        Iterable<Reservation> reservations = reservationService.findAll();
+
+        assertEquals(2, reservations.spliterator().getExactSizeIfKnown());
     }
 
     public Reservation buildReservation(String firstName, String lastName, String email, String arrival, String departure){

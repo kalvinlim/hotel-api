@@ -8,10 +8,7 @@ import com.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -21,12 +18,17 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+    @GetMapping(path="get/all")
+    public @ResponseBody Iterable<Reservation> getAllUsers(){
+        return reservationService.findAll();
+    }
+
     @PostMapping(path="/save")
     public @ResponseBody String saveReservation(@RequestParam String firstName,
-                                               @RequestParam String lastName,
-                                               @RequestParam String email,
-                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate arrival,
-                                               @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departure) throws InvalidHotelConfigException, RoomCapacityExceededException {
+                                                @RequestParam String lastName,
+                                                @RequestParam String email,
+                                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate arrival,
+                                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departure) throws InvalidHotelConfigException, RoomCapacityExceededException {
 
         Reservation reservation = ReservationBuilder.aReservation()
                                                     .withFirstName(firstName)
